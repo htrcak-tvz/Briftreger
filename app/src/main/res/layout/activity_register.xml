@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_button_registration" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/select_photo_registration"
         android:layout_width="150dp"
         android:layout_height="150dp"
