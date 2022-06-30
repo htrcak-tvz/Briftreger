@@ -19,6 +19,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private val TAG = "RegisterActivity"
+    private var selectedPhotoUri: Uri?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,11 +72,18 @@ class RegisterActivity : AppCompatActivity() {
         if (selectedPhotoUri == null) return
 
         val filename = UUID.randomUUID().toString()
-        val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
+        val ref = FirebaseStorage.getInstance().reference.child("/images/$filename")
 
         ref.putFile(selectedPhotoUri!!)
             .addOnSuccessListener {
                 Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
+
+                ref.downloadUrl.addOnSuccessListener {it2 ->
+                    Log.d(TAG, "File location: $it2")
+                }
+            }
+            .addOnFailureListener{
+                Log.d(TAG, "Failed to upload image: ${it.message}")
             }
     }
 
@@ -86,16 +94,13 @@ class RegisterActivity : AppCompatActivity() {
         resultLauncher.launch(intent)
     }
 
-    var selectedPhotoUri: Uri?= null
-
     private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == Activity.RESULT_OK && it != null) {
 
-            val selectedPhotoUri = it.data?.data
+            selectedPhotoUri = it.data?.data
             Log.d(TAG, "Photo is selected $selectedPhotoUri")
 
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
-            bitmap.setHasAlpha(true)
             val bitmapDrawable = BitmapDrawable(resources, bitmap)
 
             /*val bitmap = uri?.let { it1 -> ImageDecoder.createSource(contentResolver, it1) }
