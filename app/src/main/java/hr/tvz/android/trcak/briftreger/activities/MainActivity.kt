@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import hr.tvz.android.trcak.briftreger.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,11 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.registerButtonRegistration.setOnClickListener {
-            val email = binding.emailInputRegistration.text.toString()
-            val pass = binding.passwordInputRegistration.text.toString()
-
-            Log.d("MainActivity", "Email is: $email")
-            Log.d("MainActivity", "Email is: $pass")
+            registerNewUser()
         }
 
         binding.haveAccountInputRegistration.setOnClickListener {
@@ -30,5 +28,28 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun registerNewUser() {
+        val email = binding.emailInputRegistration.text.toString()
+        val pass = binding.passwordInputRegistration.text.toString()
+
+        if (email.isBlank() || pass.isBlank()) {
+            Toast.makeText(this, "Please enter email and password", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        Log.d("MainActivity", "Email is: $email")
+        Log.d("MainActivity", "Email is: $pass")
+
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
+            .addOnCompleteListener {
+                if (!it.isSuccessful) return@addOnCompleteListener
+
+                Log.d("MainActivity", "Successfilly created user with uid: ${it.result.user?.uid}")
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, it.message.toString(), Toast.LENGTH_LONG).show()
+            }
     }
 }
