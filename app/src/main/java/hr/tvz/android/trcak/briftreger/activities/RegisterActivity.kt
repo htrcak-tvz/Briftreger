@@ -2,11 +2,7 @@ package hr.tvz.android.trcak.briftreger.activities
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.ImageDecoder
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,14 +10,15 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.graphics.decodeBitmap
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
 import hr.tvz.android.trcak.briftreger.databinding.ActivityRegisterBinding
-import javax.xml.transform.Source
+import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
+    private val TAG = "RegisterActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.selectPhotoRegistration.setOnClickListener {
-            Log.d("MainActivity", "Try to show photo selector")
+            Log.d(TAG, "Try to show photo selector")
             openImageSelector()
         }
 
@@ -39,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.haveAccountInputRegistration.setOnClickListener {
-            Log.d("MainActivity", "Try to show login activity")
+            Log.d(TAG, "Try to show login activity")
 
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -55,14 +52,14 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        Log.d("MainActivity", "Email is: $email")
-        Log.d("MainActivity", "Email is: $pass")
+        Log.d(TAG, "Email is: $email")
+        Log.d(TAG, "Email is: $pass")
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener {
                 if (!it.isSuccessful) return@addOnCompleteListener
 
-                Log.d("MainActivity", "Successfilly created user with uid: ${it.result.user?.uid}")
+                Log.d(TAG, "Successfully created user with uid: ${it.result.user?.uid}")
                 uploadImageToFirebaseStorage()
             }
             .addOnFailureListener {
@@ -71,7 +68,15 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun uploadImageToFirebaseStorage() {
-        // todo
+        if (selectedPhotoUri == null) return
+
+        val filename = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
+
+        ref.putFile(selectedPhotoUri!!)
+            .addOnSuccessListener {
+                Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
+            }
     }
 
     private fun openImageSelector() {
@@ -87,7 +92,7 @@ class RegisterActivity : AppCompatActivity() {
         if (it.resultCode == Activity.RESULT_OK && it != null) {
 
             val selectedPhotoUri = it.data?.data
-            Log.d("RegisterActivity", "Photo is selected $selectedPhotoUri")
+            Log.d(TAG, "Photo is selected $selectedPhotoUri")
 
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
             bitmap.setHasAlpha(true)
@@ -98,7 +103,7 @@ class RegisterActivity : AppCompatActivity() {
 
             binding.selectPhotoRegistration.background = bitmapDrawable
         } else {
-            Log.d("RegisterActivity", "Photo NOT selected")
+            Log.d(TAG, "Photo NOT selected")
         }
     }
 }
