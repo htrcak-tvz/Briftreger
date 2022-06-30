@@ -15,10 +15,12 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val email = binding.emailInputRegistration.text.toString()
-        val pass = binding.passwordInputRegistration.text.toString()
+        binding.registerButtonRegistration.setOnClickListener {
+            val email = binding.emailInputRegistration.text.toString()
+            val pass = binding.passwordInputRegistration.text.toString()
 
-        Log.d("MainActivity", "Email is: $email")
-        Log.d("MainActivity", "Email is: $pass")
+            Log.d("MainActivity", "Email is: $email")
+            Log.d("MainActivity", "Email is: $pass")
+        }
     }
 }
