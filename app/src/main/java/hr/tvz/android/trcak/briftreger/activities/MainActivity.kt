@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.selectPhotoRegistration.setOnClickListener {
+            Log.d("MainActivity", "Try to show photo selector")
+        }
+
         binding.registerButtonRegistration.setOnClickListener {
             registerNewUser()
         }
