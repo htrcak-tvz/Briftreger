@@ -4,5 +4,6 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="register_button">Register</string>
+    <string name="login_button">Login</string>
     <string name="existing_account_question">Already have an account?</string>
 </resources>

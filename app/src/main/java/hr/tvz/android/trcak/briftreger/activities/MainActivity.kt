@@ -1,5 +1,6 @@
 package hr.tvz.android.trcak.briftreger.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.haveAccountInputRegistration.setOnClickListener {
             Log.d("MainActivity", "Try to show login activity")
+
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }
