@@ -1,4 +1,4 @@
-package hr.tvz.android.trcak.briftreger
+package hr.tvz.android.trcak.briftreger.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,6 +21,10 @@ class MainActivity : AppCompatActivity() {
 
             Log.d("MainActivity", "Email is: $email")
             Log.d("MainActivity", "Email is: $pass")
+        }
+
+        binding.haveAccountInputRegistration.setOnClickListener {
+            Log.d("MainActivity", "Try to show login activity")
         }
     }
 }
