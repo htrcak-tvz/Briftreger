@@ -11,16 +11,16 @@
         android:id="@+id/username_input_registration"
         android:layout_width="382dp"
         android:layout_height="48dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/rounded_input_register_login"
         android:ems="10"
         android:hint="@string/username"
-        android:paddingStart="20dp"
         android:inputType="textPersonName"
+        android:paddingStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/select_photo_registration" />
 
     <EditText
         android:id="@+id/email_input_registration"
@@ -74,4 +74,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_button_registration" />
+
+    <Button
+        android:id="@+id/select_photo_registration"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/circlular_button"
+        android:text="@string/select_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
