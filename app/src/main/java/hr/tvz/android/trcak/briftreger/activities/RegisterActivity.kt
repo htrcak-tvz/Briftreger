@@ -11,8 +11,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import hr.tvz.android.trcak.briftreger.databinding.ActivityRegisterBinding
+import hr.tvz.android.trcak.briftreger.models.User
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -80,10 +82,28 @@ class RegisterActivity : AppCompatActivity() {
 
                 ref.downloadUrl.addOnSuccessListener {it2 ->
                     Log.d(TAG, "File location: $it2")
+                    saveUserToFirebaseDatabase(it2.toString())
                 }
             }
             .addOnFailureListener{
                 Log.d(TAG, "Failed to upload image: ${it.message}")
+            }
+    }
+
+    private fun saveUserToFirebaseDatabase(profileImageUrl: String) {
+        Log.d(TAG, "Trying to save user in saveUserToFirebaseDatabase")
+        val uid = FirebaseAuth.getInstance().uid ?: ""
+        val ref = FirebaseDatabase.getInstance().reference.child("users").child(uid)
+
+        val user = User(uid, binding.usernameInputRegistration.text.toString(), profileImageUrl)
+        Log.d(TAG, "User is $user")
+
+        ref.setValue(user)
+            .addOnSuccessListener {
+                Log.d(TAG, "User saved to Firebase Database")
+            }
+            .addOnFailureListener {
+                Log.d(TAG, "Failed to save user to Firebase Database, reason: $it")
             }
     }
 
