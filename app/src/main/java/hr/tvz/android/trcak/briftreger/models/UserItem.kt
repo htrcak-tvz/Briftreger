@@ -7,7 +7,7 @@ import com.xwray.groupie.viewbinding.BindableItem
 import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.UserRowNewMessageBinding
 
-class UserItem(private val user: User): BindableItem<UserRowNewMessageBinding>() {
+class UserItem(val user: User): BindableItem<UserRowNewMessageBinding>() {
 
     override fun getLayout() = R.layout.user_row_new_message
 

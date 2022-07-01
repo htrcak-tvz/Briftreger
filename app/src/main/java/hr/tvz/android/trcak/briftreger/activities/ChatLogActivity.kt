@@ -7,6 +7,7 @@ import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.ActivityChatLogBinding
 import hr.tvz.android.trcak.briftreger.models.ChatFromItem
 import hr.tvz.android.trcak.briftreger.models.ChatToItem
+import hr.tvz.android.trcak.briftreger.models.User
 
 class ChatLogActivity : AppCompatActivity() {
 
@@ -18,8 +19,10 @@ class ChatLogActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val username = intent.getStringExtra(NewMessageActivity.USER_KEY)
-        supportActionBar?.title = username
+        val user = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
+        if (user != null) {
+            supportActionBar?.title = user.username
+        }
 
         val adapter = GroupieAdapter()
         adapter.add(ChatFromItem())
