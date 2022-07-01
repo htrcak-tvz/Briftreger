@@ -52,4 +52,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
+    implementation "com.github.lisawray.groupie:groupie:2.10.1"
+    implementation "com.github.lisawray.groupie:groupie-viewbinding:2.10.1"
+    implementation 'com.squareup.picasso:picasso:2.8'
 }
