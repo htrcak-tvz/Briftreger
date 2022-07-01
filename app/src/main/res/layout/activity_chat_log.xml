@@ -7,7 +7,7 @@
     tools:context=".activities.ChatLogActivity">
 
     <EditText
-        android:id="@+id/edit_text_send_button"
+        android:id="@+id/edit_text_chat_log"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
@@ -18,11 +18,11 @@
         android:hint="@string/enter_message"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/edit_text_chat_log"
+        app:layout_constraintEnd_toStartOf="@+id/edit_text_send_button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/edit_text_chat_log"
+        android:id="@+id/edit_text_send_button"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
