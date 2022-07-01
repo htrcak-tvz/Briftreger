@@ -5,8 +5,7 @@ import android.os.Bundle
 import com.xwray.groupie.GroupieAdapter
 import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.ActivityChatLogBinding
-import hr.tvz.android.trcak.briftreger.models.ChatFromItem
-import hr.tvz.android.trcak.briftreger.models.ChatToItem
+import hr.tvz.android.trcak.briftreger.models.ChatItems
 import hr.tvz.android.trcak.briftreger.models.User
 
 class ChatLogActivity : AppCompatActivity() {
@@ -24,17 +23,21 @@ class ChatLogActivity : AppCompatActivity() {
             supportActionBar?.title = user.username
         }
 
+        setupDummyData()
+    }
+
+    private fun setupDummyData() {
         val adapter = GroupieAdapter()
-        adapter.add(ChatFromItem())
-        adapter.add(ChatToItem())
-        adapter.add(ChatToItem())
-        adapter.add(ChatFromItem())
-        adapter.add(ChatToItem())
-        adapter.add(ChatFromItem())
-        adapter.add(ChatFromItem())
-        adapter.add(ChatToItem())
-        adapter.add(ChatToItem())
-        adapter.add(ChatFromItem())
+
+        adapter.add(ChatItems.ChatFromItem("From text sending to you"))
+        adapter.add(ChatItems.ChatToItem("Chat text returning back\nSending some more\noh wow"))
+        adapter.add(ChatItems.ChatToItem("Chat text returning back\nSending some more\noh wow"))
+        adapter.add(ChatItems.ChatToItem("Chat text returning back\nSending some more\noh wow"))
+        adapter.add(ChatItems.ChatFromItem("From text sending to you"))
+        adapter.add(ChatItems.ChatToItem("Chat text returning back\nSending some more\noh wow"))
+        adapter.add(ChatItems.ChatFromItem("From text sending to you"))
+
         binding.RVChatLog.adapter = adapter
     }
+
 }
