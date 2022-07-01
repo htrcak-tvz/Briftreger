@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_cloud"
         android:maxWidth="235dp"
-        android:padding="8dp"
+        android:padding="16dp"
         android:text="This is a message that is really long and it should probably wrap around everywhere"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
