@@ -7,13 +7,28 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import hr.tvz.android.trcak.briftreger.R
+import hr.tvz.android.trcak.briftreger.databinding.ActivityLatestMessagesBinding
 
 class LatestMessagesActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityLatestMessagesBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_latest_messages)
+        binding = ActivityLatestMessagesBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.newMessageButtonLatestMessages.setOnClickListener {
+            openListOfUsers()
+        }
 
         isUserLoggedIn()
+    }
+
+    private fun openListOfUsers() {
+        val intent = Intent(this, NewMessageActivity::class.java)
+        startActivity(intent)
     }
 
     private fun isUserLoggedIn() {

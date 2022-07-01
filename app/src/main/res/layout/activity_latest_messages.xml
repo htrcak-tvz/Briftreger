@@ -6,4 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".activities.LatestMessagesActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/new_message_button_latest_messages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="44dp"
+        android:clickable="true"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:contentDescription="@string/create_new_message"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_new_message" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
