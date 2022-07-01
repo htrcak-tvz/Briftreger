@@ -6,6 +6,7 @@
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/drawable/circlular_button.xml" value="0.3675" />
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/drawable/ic_new_message.xml" value="0.3425" />
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/drawable/rounded_button.xml" value="0.3675" />
+        <entry key="..\:/dev/Android/Briftreger/app/src/main/res/drawable/rounded_cloud.xml" value="0.3675" />
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/drawable/rounded_input_register_login.xml" value="0.248" />
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/layout/activity_chat_log.xml" value="0.36666666666666664" />
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/layout/activity_latest_messages.xml" value="0.36666666666666664" />
@@ -13,6 +14,8 @@
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/layout/activity_new_message.xml" value="0.36666666666666664" />
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/layout/activity_register.xml" value="0.17831813576494426" />
+        <entry key="..\:/dev/Android/Briftreger/app/src/main/res/layout/chat_from_row.xml" value="0.5" />
+        <entry key="..\:/dev/Android/Briftreger/app/src/main/res/layout/chat_to_row.xml" value="0.5" />
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/layout/user_row_new_message.xml" value="0.36666666666666664" />
         <entry key="..\:/dev/Android/Briftreger/app/src/main/res/menu/nav_menu.xml" value="0.2962962962962963" />
       </map>
