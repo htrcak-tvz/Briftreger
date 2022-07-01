@@ -121,12 +121,14 @@ class RegisterActivity : AppCompatActivity() {
             Log.d(TAG, "Photo is selected $selectedPhotoUri")
 
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
-            val bitmapDrawable = BitmapDrawable(resources, bitmap)
+            binding.circularImagePreview.setImageBitmap(bitmap)
+            binding.selectPhotoRegistration.alpha = 0f
+            //val bitmapDrawable = BitmapDrawable(resources, bitmap)
 
             /*val bitmap = uri?.let { it1 -> ImageDecoder.createSource(contentResolver, it1) }
             val bitmapDrawable = Drawable.createFromPath(uri.toString())*/
 
-            binding.selectPhotoRegistration.background = bitmapDrawable
+            //binding.selectPhotoRegistration.background = bitmapDrawable
         } else {
             Log.d(TAG, "Photo NOT selected")
         }
