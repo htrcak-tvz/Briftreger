@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupieAdapter
@@ -33,6 +34,7 @@ class LatestMessagesActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.RVLatestMessages.adapter = adapter
+        binding.RVLatestMessages.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
         binding.newMessageButtonLatestMessages.setOnClickListener {
             openListOfUsers()
