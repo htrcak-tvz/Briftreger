@@ -91,6 +91,14 @@ class ChatLogActivity : AppCompatActivity() {
             .getInstance()
             .getReference("/user-messages/$receiverId/$senderId").push()
 
+        val latestMessageSenderReference = FirebaseDatabase
+            .getInstance()
+            .getReference("/latest-messages/$senderId/$receiverId")
+
+        val latestMessageReceiverReference = FirebaseDatabase
+            .getInstance()
+            .getReference("/latest-messages/$receiverId/$senderId")
+
         val chatMessage = ChatMessage(senderReference.key!!, text, senderId, receiverId,
             (System.currentTimeMillis() / 1000)
         )
@@ -105,6 +113,9 @@ class ChatLogActivity : AppCompatActivity() {
             }
 
         receiverReference.setValue(chatMessage)
+
+        latestMessageSenderReference.setValue(chatMessage)
+        latestMessageReceiverReference.setValue(chatMessage)
     }
 
 }

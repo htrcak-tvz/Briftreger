@@ -5,8 +5,12 @@ import com.xwray.groupie.viewbinding.BindableItem
 import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.LatestMessagesRowBinding
 
-class LatestMessageItem: BindableItem<LatestMessagesRowBinding>() {
+class LatestMessageItem(val chatMessage: ChatMessage): BindableItem<LatestMessagesRowBinding>() {
+
     override fun bind(viewBinding: LatestMessagesRowBinding, position: Int) {
+        // todo implement avatar loading
+        viewBinding.usernameLatestMessage.text = "username"
+        viewBinding.messageLatestMessage.text = chatMessage.text
 
     }
 
