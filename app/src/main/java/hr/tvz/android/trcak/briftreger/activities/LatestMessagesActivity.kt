@@ -15,6 +15,7 @@ import hr.tvz.android.trcak.briftreger.databinding.ActivityLatestMessagesBinding
 import hr.tvz.android.trcak.briftreger.models.ChatMessage
 import hr.tvz.android.trcak.briftreger.models.LatestMessageItem
 import hr.tvz.android.trcak.briftreger.models.User
+import hr.tvz.android.trcak.briftreger.models.UserItem
 
 class LatestMessagesActivity : AppCompatActivity() {
 
@@ -35,6 +36,16 @@ class LatestMessagesActivity : AppCompatActivity() {
 
         binding.RVLatestMessages.adapter = adapter
         binding.RVLatestMessages.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+
+        adapter.setOnItemClickListener { item, _ ->
+
+            val intent = Intent(this, ChatLogActivity::class.java)
+
+            val userItem = item as LatestMessageItem
+
+            intent.putExtra(NewMessageActivity.USER_KEY, userItem.chatPartnerUser)
+            startActivity(intent)
+        }
 
         binding.newMessageButtonLatestMessages.setOnClickListener {
             openListOfUsers()

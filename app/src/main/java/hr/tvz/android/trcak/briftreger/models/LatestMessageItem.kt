@@ -12,6 +12,8 @@ import hr.tvz.android.trcak.briftreger.databinding.LatestMessagesRowBinding
 
 class LatestMessageItem(val chatMessage: ChatMessage): BindableItem<LatestMessagesRowBinding>() {
 
+    var chatPartnerUser: User ?= null
+
     override fun bind(viewBinding: LatestMessagesRowBinding, position: Int) {
         // todo implement avatar loading
 
@@ -24,9 +26,9 @@ class LatestMessageItem(val chatMessage: ChatMessage): BindableItem<LatestMessag
         val ref = FirebaseDatabase.getInstance().getReference("/users/$chatPartnerId")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val user = snapshot.getValue(User::class.java)
-                viewBinding.usernameLatestMessage.text = user?.username
-                viewBinding.imageViewNewMessage.setImageURI(user?.profileImageUrl)
+                chatPartnerUser = snapshot.getValue(User::class.java)
+                viewBinding.usernameLatestMessage.text = chatPartnerUser?.username
+                viewBinding.imageViewNewMessage.setImageURI(chatPartnerUser?.profileImageUrl)
             }
             override fun onCancelled(error: DatabaseError) {}
         })
