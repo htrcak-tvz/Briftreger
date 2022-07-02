@@ -45,7 +45,9 @@ class ChatLogActivity : AppCompatActivity() {
     }
 
     private fun listenForMessages() {
-        val ref = FirebaseDatabase.getInstance().getReference("/messages")
+        val ref = FirebaseDatabase
+            .getInstance()
+            .getReference("/user-messages/${LatestMessagesActivity.currentUser.uid}/${toUser.uid}")
 
         ref.addChildEventListener(object: ChildEventListener {
 
@@ -73,24 +75,34 @@ class ChatLogActivity : AppCompatActivity() {
     private fun sendMessage() {
 
         val text = binding.editTextChatLog.text.toString()
-        val fromId = FirebaseAuth.getInstance().uid
-        val toId = toUser.uid
+        val senderId = FirebaseAuth.getInstance().uid
+        val receiverId = toUser.uid
 
-        if (fromId == null) return
-        if (toId == null) return
+        if (senderId == null) return
+        if (receiverId == null) return
 
-        val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
-        val chatMessage = ChatMessage(reference.key!!, text, fromId, toId,
+        //val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+
+        val senderReference = FirebaseDatabase
+            .getInstance()
+            .getReference("/user-messages/$senderId/$receiverId").push()
+
+        val receiverReference = FirebaseDatabase
+            .getInstance()
+            .getReference("/user-messages/$receiverId/$senderId").push()
+
+        val chatMessage = ChatMessage(senderReference.key!!, text, senderId, receiverId,
             (System.currentTimeMillis() / 1000)
         )
 
         Log.d(TAG, "Chat message: $chatMessage")
 
-        reference.setValue(chatMessage)
+        senderReference.setValue(chatMessage)
             .addOnSuccessListener {
-                Log.d(TAG, "Saved chat message: ${reference.key}")
+                Log.d(TAG, "Saved chat message: ${senderReference.key}")
             }
 
+        receiverReference.setValue(chatMessage)
     }
 
 }
