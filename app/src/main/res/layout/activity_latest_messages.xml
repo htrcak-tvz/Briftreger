@@ -20,4 +20,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_new_message" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RV_latest_messages"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

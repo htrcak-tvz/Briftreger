@@ -11,8 +11,10 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.xwray.groupie.GroupieAdapter
 import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.ActivityLatestMessagesBinding
+import hr.tvz.android.trcak.briftreger.models.LatestMessageItem
 import hr.tvz.android.trcak.briftreger.models.User
 
 class LatestMessagesActivity : AppCompatActivity() {
@@ -35,6 +37,18 @@ class LatestMessagesActivity : AppCompatActivity() {
         }
 
         isUserLoggedIn()
+        setupDummyRows()
+
+    }
+
+    private fun setupDummyRows() {
+        val adapter = GroupieAdapter()
+
+        adapter.add(LatestMessageItem())
+        adapter.add(LatestMessageItem())
+        adapter.add(LatestMessageItem())
+
+        binding.RVLatestMessages.adapter = adapter
     }
 
     private fun openListOfUsers() {
