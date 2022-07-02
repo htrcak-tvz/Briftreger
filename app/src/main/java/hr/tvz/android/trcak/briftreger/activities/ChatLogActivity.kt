@@ -59,9 +59,9 @@ class ChatLogActivity : AppCompatActivity() {
                     Log.d(TAG, "Message: ${chatMessage.text}")
 
                     if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
-                        adapter.add(ChatItems.ChatToItem(chatMessage.text))
+                        adapter.add(ChatItems.ChatSenderItem(chatMessage.text))
                     } else {
-                        adapter.add(ChatItems.ChatFromItem(chatMessage.text))
+                        adapter.add(ChatItems.ChatReceiverItem(chatMessage.text))
                     }
                 }
             }
@@ -100,13 +100,13 @@ class ChatLogActivity : AppCompatActivity() {
     private fun setupDummyData() {
         val adapter = GroupieAdapter()
 
-        adapter.add(ChatItems.ChatFromItem("From text sending to you"))
-        adapter.add(ChatItems.ChatToItem("Chat text returning back\nSending some more\noh wow"))
-        adapter.add(ChatItems.ChatToItem("Chat text returning back\nSending some more\noh wow"))
-        adapter.add(ChatItems.ChatToItem("Chat text returning back\nSending some more\noh wow"))
-        adapter.add(ChatItems.ChatFromItem("From text sending to you"))
-        adapter.add(ChatItems.ChatToItem("Chat text returning back\nSending some more\noh wow"))
-        adapter.add(ChatItems.ChatFromItem("From text sending to you"))
+        adapter.add(ChatItems.ChatReceiverItem("From text sending to you"))
+        adapter.add(ChatItems.ChatSenderItem("Chat text returning back\nSending some more\noh wow"))
+        adapter.add(ChatItems.ChatSenderItem("Chat text returning back\nSending some more\noh wow"))
+        adapter.add(ChatItems.ChatSenderItem("Chat text returning back\nSending some more\noh wow"))
+        adapter.add(ChatItems.ChatReceiverItem("From text sending to you"))
+        adapter.add(ChatItems.ChatSenderItem("Chat text returning back\nSending some more\noh wow"))
+        adapter.add(ChatItems.ChatReceiverItem("From text sending to you"))
 
         binding.RVChatLog.adapter = adapter
     }
