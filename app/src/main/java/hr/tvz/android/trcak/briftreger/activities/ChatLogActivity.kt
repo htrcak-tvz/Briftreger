@@ -9,7 +9,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupieAdapter
-import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.ActivityChatLogBinding
 import hr.tvz.android.trcak.briftreger.models.ChatItems
 import hr.tvz.android.trcak.briftreger.models.ChatMessage
@@ -22,6 +21,7 @@ class ChatLogActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityChatLogBinding
+    private lateinit var toUser: User
 
     val adapter = GroupieAdapter()
 
@@ -33,12 +33,9 @@ class ChatLogActivity : AppCompatActivity() {
 
         binding.RVChatLog.adapter = adapter
 
-        val user = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
-        if (user != null) {
-            supportActionBar?.title = user.username
-        }
+        toUser = intent.getParcelableExtra(NewMessageActivity.USER_KEY)!!
+        supportActionBar?.title = toUser.username
 
-        //setupDummyData()
         listenForMessages()
 
         binding.editTextSendButton.setOnClickListener {
@@ -59,9 +56,9 @@ class ChatLogActivity : AppCompatActivity() {
                     Log.d(TAG, "Message: ${chatMessage.text}")
 
                     if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
-                        adapter.add(ChatItems.ChatSenderItem(chatMessage.text))
+                        adapter.add(ChatItems.ChatSenderItem(chatMessage.text, LatestMessagesActivity.currentUser))
                     } else {
-                        adapter.add(ChatItems.ChatReceiverItem(chatMessage.text))
+                        adapter.add(ChatItems.ChatReceiverItem(chatMessage.text, toUser))
                     }
                 }
             }
@@ -77,8 +74,7 @@ class ChatLogActivity : AppCompatActivity() {
 
         val text = binding.editTextChatLog.text.toString()
         val fromId = FirebaseAuth.getInstance().uid
-        val user = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
-        val toId = user?.uid
+        val toId = toUser.uid
 
         if (fromId == null) return
         if (toId == null) return
@@ -95,20 +91,6 @@ class ChatLogActivity : AppCompatActivity() {
                 Log.d(TAG, "Saved chat message: ${reference.key}")
             }
 
-    }
-
-    private fun setupDummyData() {
-        val adapter = GroupieAdapter()
-
-        adapter.add(ChatItems.ChatReceiverItem("From text sending to you"))
-        adapter.add(ChatItems.ChatSenderItem("Chat text returning back\nSending some more\noh wow"))
-        adapter.add(ChatItems.ChatSenderItem("Chat text returning back\nSending some more\noh wow"))
-        adapter.add(ChatItems.ChatSenderItem("Chat text returning back\nSending some more\noh wow"))
-        adapter.add(ChatItems.ChatReceiverItem("From text sending to you"))
-        adapter.add(ChatItems.ChatSenderItem("Chat text returning back\nSending some more\noh wow"))
-        adapter.add(ChatItems.ChatReceiverItem("From text sending to you"))
-
-        binding.RVChatLog.adapter = adapter
     }
 
 }

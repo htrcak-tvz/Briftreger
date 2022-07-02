@@ -8,10 +8,11 @@ import hr.tvz.android.trcak.briftreger.databinding.ChatSenderRowBinding
 
 class ChatItems {
 
-    class ChatReceiverItem(val text: String): BindableItem<ChatReceiverRowBinding>() {
+    class ChatReceiverItem(val text: String, val user: User): BindableItem<ChatReceiverRowBinding>() {
 
         override fun bind(viewBinding: ChatReceiverRowBinding, position: Int) {
             viewBinding.textView.text = text
+            viewBinding.profileImage.setImageURI(user.profileImageUrl)
         }
 
         override fun getLayout() = R.layout.chat_receiver_row
@@ -21,10 +22,11 @@ class ChatItems {
         }
     }
 
-    class ChatSenderItem(val text: String): BindableItem<ChatSenderRowBinding>() {
+    class ChatSenderItem(val text: String, val user: User): BindableItem<ChatSenderRowBinding>() {
 
         override fun bind(viewBinding: ChatSenderRowBinding, position: Int) {
             viewBinding.textView.text = text
+            viewBinding.profileImage.setImageURI(user.profileImageUrl)
         }
 
         override fun getLayout() = R.layout.chat_sender_row

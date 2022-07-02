@@ -17,18 +17,21 @@
         android:text="This is a message that is really long and it should probably wrap around everywhere"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/profile_image"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/profile_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        app:roundedCornerRadius="30dp"
+        app:roundingBorderColor="@color/design_default_color_primary_dark"
+        app:roundingBorderWidth="2dp"
         android:background="@android:drawable/btn_dialog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
