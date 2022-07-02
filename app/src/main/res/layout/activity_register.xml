@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A77979"
     tools:context=".activities.RegisterActivity">
 
     <EditText
@@ -64,13 +63,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_input_registration" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/register_button_registration"
         android:layout_width="331dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:text="@string/register_button"
         android:background="@drawable/rounded_button"
+        android:text="@string/register_button"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_input_registration" />
@@ -81,8 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/existing_account_question"
-        android:textColor="@color/white"
-        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_button_registration" />
@@ -94,6 +94,7 @@
         android:layout_marginTop="80dp"
         android:background="@drawable/circlular_button"
         android:text="@string/select_photo"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
