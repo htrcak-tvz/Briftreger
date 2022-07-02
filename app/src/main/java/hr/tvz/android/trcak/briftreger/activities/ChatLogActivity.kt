@@ -100,6 +100,7 @@ class ChatLogActivity : AppCompatActivity() {
         senderReference.setValue(chatMessage)
             .addOnSuccessListener {
                 Log.d(TAG, "Saved chat message: ${senderReference.key}")
+                binding.editTextChatLog.text.clear()
             }
 
         receiverReference.setValue(chatMessage)
