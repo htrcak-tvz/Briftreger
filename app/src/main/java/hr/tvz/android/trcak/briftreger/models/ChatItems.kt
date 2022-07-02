@@ -8,6 +8,7 @@ import hr.tvz.android.trcak.briftreger.databinding.ChatToRowBinding
 
 class ChatItems {
 
+    // Todo find better naming convention for sender and recipient........??????
     class ChatFromItem(val text: String): BindableItem<ChatFromRowBinding>() {
 
         override fun bind(viewBinding: ChatFromRowBinding, position: Int) {
