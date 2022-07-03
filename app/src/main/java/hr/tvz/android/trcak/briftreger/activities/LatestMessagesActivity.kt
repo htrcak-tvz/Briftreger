@@ -1,5 +1,6 @@
 package hr.tvz.android.trcak.briftreger.activities
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +16,7 @@ import hr.tvz.android.trcak.briftreger.databinding.ActivityLatestMessagesBinding
 import hr.tvz.android.trcak.briftreger.models.ChatMessage
 import hr.tvz.android.trcak.briftreger.adapters.LatestMessageItem
 import hr.tvz.android.trcak.briftreger.models.User
+import java.lang.Exception
 
 class LatestMessagesActivity : AppCompatActivity() {
 
@@ -76,7 +78,9 @@ class LatestMessagesActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 currentUser = snapshot.getValue(User::class.java)!!
                 Log.d(TAG, "User logged in: $currentUser")
+                invalidateOptionsMenu()
             }
+
 
             override fun onCancelled(error: DatabaseError) {}
         })
@@ -138,8 +142,19 @@ class LatestMessagesActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.nav_menu, menu)
+    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menu?.add(Menu.NONE, )
+        inflateMenu(menu)
         return super.onCreateOptionsMenu(menu)
+    }*/
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        try {
+            supportActionBar!!.title = currentUser.username
+        } catch (e: UninitializedPropertyAccessException) {
+            println(e)
+        }
+        menuInflater.inflate(R.menu.nav_menu, menu)
+        return super.onPrepareOptionsMenu(menu)
     }
 }
