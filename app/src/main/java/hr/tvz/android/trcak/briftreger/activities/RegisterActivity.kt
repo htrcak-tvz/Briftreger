@@ -49,9 +49,13 @@ class RegisterActivity : AppCompatActivity() {
     private fun registerNewUser() {
         val email = binding.emailInputRegistration.text.toString()
         val pass = binding.passwordInputRegistration.text.toString()
+        val user = binding.usernameInputRegistration.text.toString()
 
-        if (email.isBlank() || pass.isBlank()) {
-            Toast.makeText(this, "Please enter email and password", Toast.LENGTH_LONG).show()
+        if (email.isBlank() || pass.isBlank() || user.isBlank()) {
+            Toast.makeText(this, "Please enter username, email and password", Toast.LENGTH_LONG).show()
+            return
+        } else if (selectedPhotoUri == null) {
+            Toast.makeText(this, "Please select image profile", Toast.LENGTH_LONG).show()
             return
         }
 
