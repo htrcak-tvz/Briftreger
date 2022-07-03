@@ -13,9 +13,8 @@ import com.xwray.groupie.GroupieAdapter
 import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.ActivityLatestMessagesBinding
 import hr.tvz.android.trcak.briftreger.models.ChatMessage
-import hr.tvz.android.trcak.briftreger.models.LatestMessageItem
+import hr.tvz.android.trcak.briftreger.adapters.LatestMessageItem
 import hr.tvz.android.trcak.briftreger.models.User
-import hr.tvz.android.trcak.briftreger.models.UserItem
 
 class LatestMessagesActivity : AppCompatActivity() {
 

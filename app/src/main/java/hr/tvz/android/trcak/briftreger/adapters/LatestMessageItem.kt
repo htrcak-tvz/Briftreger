@@ -1,4 +1,4 @@
-package hr.tvz.android.trcak.briftreger.models
+package hr.tvz.android.trcak.briftreger.adapters
 
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
@@ -9,10 +9,12 @@ import com.google.firebase.database.ValueEventListener
 import com.xwray.groupie.viewbinding.BindableItem
 import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.LatestMessagesRowBinding
+import hr.tvz.android.trcak.briftreger.models.ChatMessage
+import hr.tvz.android.trcak.briftreger.models.User
 
 class LatestMessageItem(val chatMessage: ChatMessage): BindableItem<LatestMessagesRowBinding>() {
 
-    var chatPartnerUser: User ?= null
+    var chatPartnerUser: User?= null
 
     override fun bind(viewBinding: LatestMessagesRowBinding, position: Int) {
         // todo implement avatar loading

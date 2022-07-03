@@ -1,10 +1,11 @@
-package hr.tvz.android.trcak.briftreger.models
+package hr.tvz.android.trcak.briftreger.adapters
 
 import android.view.View
 import com.xwray.groupie.viewbinding.BindableItem
 import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.ChatReceiverRowBinding
 import hr.tvz.android.trcak.briftreger.databinding.ChatSenderRowBinding
+import hr.tvz.android.trcak.briftreger.models.User
 
 class ChatItems {
 

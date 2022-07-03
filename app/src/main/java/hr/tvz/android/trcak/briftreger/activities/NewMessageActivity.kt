@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -13,7 +12,7 @@ import com.xwray.groupie.GroupieAdapter
 import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.ActivityNewMessageBinding
 import hr.tvz.android.trcak.briftreger.models.User
-import hr.tvz.android.trcak.briftreger.models.UserItem
+import hr.tvz.android.trcak.briftreger.adapters.UserItem
 
 class NewMessageActivity : AppCompatActivity() {
 

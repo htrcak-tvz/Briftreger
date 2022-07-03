@@ -10,7 +10,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupieAdapter
 import hr.tvz.android.trcak.briftreger.databinding.ActivityChatLogBinding
-import hr.tvz.android.trcak.briftreger.models.ChatItems
+import hr.tvz.android.trcak.briftreger.adapters.ChatItems
 import hr.tvz.android.trcak.briftreger.models.ChatMessage
 import hr.tvz.android.trcak.briftreger.models.User
 

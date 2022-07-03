@@ -1,11 +1,10 @@
-package hr.tvz.android.trcak.briftreger.models
+package hr.tvz.android.trcak.briftreger.adapters
 
 import android.view.View
-import com.facebook.drawee.backends.pipeline.Fresco
-import com.squareup.picasso.Picasso
 import com.xwray.groupie.viewbinding.BindableItem
 import hr.tvz.android.trcak.briftreger.R
 import hr.tvz.android.trcak.briftreger.databinding.UserRowNewMessageBinding
+import hr.tvz.android.trcak.briftreger.models.User
 
 class UserItem(val user: User): BindableItem<UserRowNewMessageBinding>() {
 
