@@ -142,12 +142,6 @@ class LatestMessagesActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menu?.add(Menu.NONE, )
-        inflateMenu(menu)
-        return super.onCreateOptionsMenu(menu)
-    }*/
-
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         try {
             supportActionBar!!.title = currentUser.username
