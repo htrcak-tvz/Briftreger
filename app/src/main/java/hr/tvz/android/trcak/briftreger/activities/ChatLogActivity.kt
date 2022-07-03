@@ -83,8 +83,6 @@ class ChatLogActivity : AppCompatActivity() {
         if (senderId == null) return
         if (receiverId == null) return
 
-        //val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
-
         val senderReference = FirebaseDatabase
             .getInstance()
             .getReference("/user-messages/$senderId/$receiverId").push()

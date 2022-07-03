@@ -25,7 +25,7 @@ class LatestMessagesActivity : AppCompatActivity() {
     lateinit var binding: ActivityLatestMessagesBinding
     private val TAG = "LatestMessagesActivity"
 
-    val adapter = GroupieAdapter()
+    private val adapter = GroupieAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

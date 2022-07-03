@@ -34,9 +34,7 @@ class LatestMessageItem(val chatMessage: ChatMessage): BindableItem<LatestMessag
             }
             override fun onCancelled(error: DatabaseError) {}
         })
-
         viewBinding.messageLatestMessage.text = chatMessage.text
-
     }
 
     override fun getLayout() = R.layout.latest_messages_row

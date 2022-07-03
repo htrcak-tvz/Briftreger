@@ -12,9 +12,7 @@ class UserItem(val user: User): BindableItem<UserRowNewMessageBinding>() {
 
     override fun bind(viewBinding: UserRowNewMessageBinding, position: Int) {
         viewBinding.usernameNewMessage.text = user.username
-
         viewBinding.imageViewNewMessage.setImageURI(user.profileImageUrl)
-        //Picasso.get().load(user.profileImageUrl).into(viewBinding.imageViewNewMessage)
     }
 
     override fun initializeViewBinding(view: View): UserRowNewMessageBinding {
