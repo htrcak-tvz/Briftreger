@@ -43,5 +43,10 @@ class LoginActivity: AppCompatActivity() {
                     }
                 }
         }
+
+        binding.forgotPasswordRegistration.setOnClickListener {
+            val intent = Intent(this, PasswordResetActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -11,6 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Briftreger">
         <activity
+            android:name=".activities.PasswordResetActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.LoginActivity" />
+        </activity>
+        <activity
             android:name=".activities.AnimationActivity"
             android:exported="false" />
         <activity

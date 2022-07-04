@@ -13,4 +13,6 @@
     <string name="chat_log">Chat</string>
     <string name="enter_message">Enter message</string>
     <string name="send">Send</string>
+    <string name="reset_button">Reset password</string>
+    <string name="forgot_password_question">Forgot password</string>
 </resources>
